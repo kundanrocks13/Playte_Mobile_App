@@ -12,7 +12,7 @@ var week=["Monday", "Tuesday", "Wednesday"];
 export default class Subscribe extends Component {
     static navigationOptions = {
         title: 'Your Subscriptions',
-        header:null,
+        
     }
     constructor(props) {
         super(props);

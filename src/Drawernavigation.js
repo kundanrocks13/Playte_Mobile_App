@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, StatusBar, Platform } from 'react-native';
+import { StyleSheet, Icon, View, Text, Image, StatusBar, Platform } from 'react-native';
 import {createDrawerNavigator, createStackNavigator, DrawerItems} from 'react-navigation'; 
 import Loginpage from './Loginpage';
 import Signup from './Signup';
 import  Dashboard from './Dashboard';
+import Contactus from './Contactus';
 import { Tab, Left } from 'native-base';
 import backgroundImage from '../assets/logo1.png';
 import {Container, Content,Header, Body} from 'native-base';
-import { Ionicons, MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import { Foundation, MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 
 const CustomDrawerContentComponent = (props) =>(
     <Container>
       <Header style={{height:200}}>
         <Body>
+            {/* logo for drawer navigation */}
           <Image
           style={Styles.drawerImage}
           source={backgroundImage}/>
@@ -20,8 +22,8 @@ const CustomDrawerContentComponent = (props) =>(
       </Header>
       <Content>
       {/* it shows drawer items like login, Signup , Home etc */}
-      {/* for set the functionality of Drawernavigation on md-menu, which is establish on HeaderPage -
-      we have to write ...props in HeaderPage */}
+      {/* for set the functionality of Drawernavigation on md-menu, which is establish on Left side on HeaderSection (HeaderPage)-
+      I have to write ...props in HeaderPage */}
           <DrawerItems {...props}/> 
       </Content>
     </Container>
@@ -30,34 +32,57 @@ const CustomDrawerContentComponent = (props) =>(
 
 const Tabstack = createStackNavigator({
     DashBoard:{
-        screen:Dashboard,
+        screen:Dashboard,  // Front page of App
         navigationOptions:
-        {header:null}
+        {header:null}        
     }
 })
 const AuthStack = createStackNavigator({
     Login:{
-        screen:Loginpage
-        
+        screen:Loginpage,
+        navigationOptions:{
+            header:null
+        }
     },
     Signup:{
-        screen:Signup
+        screen:Signup,
+        navigationOptions:{
+            header:null
+        }
     },
 })
+const Contact = createStackNavigator({
+    contactus:{
+        screen:Contactus
+    }
+})
+
+
 const Drawernavigation = createDrawerNavigator({
     Home:{
         screen:Tabstack,
         navigationOptions: {
-            tabBarIcon: ({ tintColor }) => (
-              <MaterialIcons name='home' size={20} />
+            drawerIcon: ({ tintColor }) => (
+                 <Entypo name="home" size={25}
+                 color ={tintColor} />
             )
           }
     },
     Login:{
         screen:AuthStack,
         navigationOptions:{
-            tabBarIcon:({tintColor}) => (
-            <MaterialIcons name='home' size={20} />)
+            drawerIcon:({tintColor}) => (
+            <MaterialCommunityIcons name='login' size={25} 
+            color ={tintColor}/>)
+        }
+    },
+    ContactUs:{
+        screen:Contact,
+        navigationOptions:{
+            drawerIcon:({tintColor}) => (
+                <Foundation name='telephone' size={25}
+                color ={tintColor}/>
+            )
         }
     }
 },
@@ -78,9 +103,12 @@ const Drawernavigation = createDrawerNavigator({
 
 const Styles=StyleSheet.create({
     drawerImage:{
-        height:150,
-        width:150,
-        borderRadius:75,
+        height:120,
+        width:120,
+        borderRadius:60,
+        // justifyContent:'center',
+        // alignItems:'center',
+        marginLeft:50
     }
 }) 
 export default Drawernavigation;

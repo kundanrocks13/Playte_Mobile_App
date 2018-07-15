@@ -8,11 +8,9 @@ export default class Landing extends Component {
   }
   render() {
     return (
-      <View>
         <View style={styles.homescreen}>
           <Image source={backgroundImage} style={{width:270, height:270}} />
         </View>
-      </View>
     );
   }
 }
@@ -21,7 +19,7 @@ const styles=StyleSheet.create({
   homescreen:{
     flex:1,
     alignItems:'center',
-    marginTop:150,
+    justifyContent:'center',
   }
 })
 

@@ -38,16 +38,20 @@ class Cardsection extends React.Component {
   ImageCard() {
     return ImageArray.map((image, index) => {
       return (
-        <Card key={index} >
+        <Card key={index}>
           <CardItem>
             <Left>
               <Thumbnail source={backgroundImage} />
               <Body>
-                <Text>Daily Subscription Plan</Text>
+                <Text>Day Subscription Plan</Text>
                 <Text note>Fruit Juice</Text>
               </Body>
             </Left>
           </CardItem>
+          <View
+            style={{borderBottomColor:'grey',
+            borderBottomWidth:0.5,}}
+          />
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.navigate('Profile', { data: "daily subscription plan", Img: image })
@@ -57,7 +61,11 @@ class Cardsection extends React.Component {
             <CardItem cardBody>
               <Image source={image} style={{ height: 200, width: null, flex: 1 }} />
             </CardItem>
-
+            <View
+            style={{borderBottomColor:'grey',
+            borderBottomWidth:0.5
+          }} 
+            />
             <CardItem style={{ height: 80 }}>
               <Left>
                 <View style={styles.button}>
@@ -111,9 +119,10 @@ const styles = StyleSheet.create({
     height: 35,
   },
   buttonText: {
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',
+    marginTop:2,
   }
 })
 // const LoginFun=()=>{
@@ -147,7 +156,7 @@ const RootStack = createStackNavigator(
     Profile: {
       screen: Subscribe,
       headerOptions: {
-        headerLeft: null,
+        // headerLeft: null,
       }
     }
     // Login:{
@@ -166,11 +175,6 @@ const RootStack = createStackNavigator(
     },
   }
 );
-
-// const tab=createMaterialTopTabNavigator({
-//   Home:{screen:Loginpage},
-//   cate:{screen:Signup}
-// })
 
 export default class Cardimage extends React.Component {
   render() {

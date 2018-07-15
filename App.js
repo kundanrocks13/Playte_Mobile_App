@@ -8,27 +8,24 @@ import Drawernavigation from './src/Drawernavigation'
 import { Icon, Ionicons, MaterialIcons, MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { Body } from 'native-base';
 
+
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = { currentScreen: 'Landing' };
+    // Animation for Playte logo start here
     setTimeout(() => {
       this.setState({ currentScreen: 'Drawernavigation' })
     }, 3000)
+    // Animation for Playte logo Ends here
   }
   render() {
+    <View>
+        <StatusBar barStyle='light-content'  backgroundColor='red'/>
+      </View>
     const { currentScreen } = this.state
     let mainScreen = currentScreen === 'Landing' ? <Landing /> : <Drawernavigation />
     return mainScreen
   }
 }
 
-
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})

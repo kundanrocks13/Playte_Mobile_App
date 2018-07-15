@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Form, Item, Input, Label, Left, Right } from 'native-base';
+import { Container, Header, Content, Form, Item, Input, Label, Left, Right, Button, Icon, Text } from 'native-base';
 import { font } from 'expo';
-import { StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Text, View, Button, Image, StatusBar, SafeAreaView, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, View, Image, StatusBar, SafeAreaView, KeyboardAvoidingView } from 'react-native'
 import { NavigationActions } from 'react-navigation';
 import backgroundImage from '../assets/logo1.png';
 import { StackNavigator } from 'react-navigation';
-import { Icon, Ionicons, MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons, MaterialCommunityIcons, Entypo, Feather } from '@expo/vector-icons';
 import {Signup}  from './Signup';
 import * as firebase from 'firebase';
 
@@ -80,26 +80,24 @@ export default class Loginpage extends Component {
 
             
             />
-
-            <TouchableOpacity style={styles.button}>
+            <Button iconLeft style={styles.button}>
+              <Feather name='log-in'size={22} color={'white'}/>
               <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
+            </Button>
+            
 
-            <TouchableOpacity style={styles.button}>
+            {/* <TouchableOpacity>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity> */}
+
+            {/* <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText} onPress={()=>{this.props.navigation.navigate('Signup')}}>Click Here, SignUp</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity>
               <Text>Forgot Password, Click Here</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={ this.navigateToAbout }>
-            <Text>Go to About Page</Text>
-            </TouchableOpacity>
-
-            
-            
-          
       </View>
       </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
@@ -128,17 +126,20 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   button: {
-    margin: 10,
-    backgroundColor: '#8BC34A',
+    // margin: 10,
+    // backgroundColor: '#8BC34A',
     borderRadius: 7,
-    width: 300,
+    marginLeft:50,
+    width: 200,
     height: 45,
+    alignItems:'center',
   },
   buttonText: {
-    fontWeight:'bold',
-    textAlign:'center',
-    padding: 10,
+    // fontWeight:'bold',
+    // textAlign:'center',
+    // padding: 10,
     fontSize: 17,
-    color:'#536DFE',
+    alignItems:'center',
+    // color:'#536DFE',
   }
 });

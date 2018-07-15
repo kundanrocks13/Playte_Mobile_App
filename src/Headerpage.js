@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, View, Content, Text } from 'native-base';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Container, Header, Left, Body, Right, 
+  Button, Icon, Title, View,
+  Content, Text
+ } from 'native-base';
+import { StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import Loginpage from './Loginpage';
 import Signup from './Signup';
@@ -29,32 +32,35 @@ export default class Headerpage extends Component {
     }
     return (
       <View>
-        <Header style={{ height: 70 }}>
-
+        <Header style={{ height: 60 }}>
+          <View>
+            <StatusBar barStyle='light-content'/>
+          </View>
           <Left>
-            <Button transparent onPress={() => this.props.navigation.openDrawer()
-            }>
+            <Button transparent onPress={() => this.props.navigation.openDrawer()}
+            >
               <Icon name='md-menu' />
             </Button>
+          
           </Left>
-          <Body>
+          <Body style={{marginLeft:70}}>
             <Title>Playte</Title>
           </Body>
-          <Right>
+          {/* <Right>
             <Button transparent>
               <Icon name='search' />
             </Button>
-            {/* <Button transparent>
+            <Button transparent>
               <Icon name='heart' onPress={()=> this.props.navigation.navigate('Loginpage')}/>
-            </Button> */}
+            </Button>
             <Button transparent>
               <Icon name='more' />
             </Button>
-            {/* <TouchableOpacity style={styles.buttonsize} onPress={()=>this.props.navigation.navigate('Login')}>
+            <TouchableOpacity style={styles.buttonsize} onPress={()=>this.props.navigation.navigate('Login')}>
             <Text style={{ textAlign:'center',padding:5, color:'blue'}}>Login</Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
 
-          </Right>
+          </Right> */}
         </Header>
       </View>
     );
