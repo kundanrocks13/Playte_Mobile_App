@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Form, Item, Input, Label, Left, Right, Button, Icon, Text } from 'native-base';
 import { font } from 'expo';
-import { StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, View, Image, StatusBar, SafeAreaView, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, View, Image, StatusBar, SafeAreaView, KeyboardAvoidingView, ImageBackground } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import backgroundImage from '../assets/logo1.png';
+import logoimage from '../assets/logo1.png';
 import { StackNavigator } from 'react-navigation';
+import bg from '../images/juice.jpg';
 import { Ionicons, MaterialIcons, MaterialCommunityIcons, Entypo, Feather } from '@expo/vector-icons';
 import {Signup}  from './Signup';
 import * as firebase from 'firebase';
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyC14UAyqebrkrFaKxEiNXWtRPSCTNuKxFY",
+  apiKey: "AIzaSyC14UAyqebrkrFaKxEiNXWtRPSCTNuKxFYmineral-water",
   authDomain: "playfiksmobile.firebaseapp.com",
   databaseURL: "https://playfiksmobile.firebaseio.com",
   projectId: "playfiksmobile",
@@ -35,84 +36,76 @@ export default class Loginpage extends Component {
     })
   }
 
-  // navigateToAbout=(props)=>{
-  //   this.props.navigation.navigate('Signup');
-  // }
-  
   render() {
     const{navigate}=this.props.navigation;
     return (
+      <ImageBackground source={require('../images/juice.jpg')} style={{alignSelf:'stretch', width:null, height:null, flex:1}}>
+      <KeyboardAvoidingView style={styles.container}>
       
-      <SafeAreaView style={styles.container}>
-      {/* <StatusBar barStyle="light-content"/> */}
-      <KeyboardAvoidingView behavior='padding' style={styles.container}>
-      {/* <Header>
-        <Left>
-        <MaterialCommunityIcons name='face-profile' onPress={()=>
-        this.props.navigation.navigate('DrawerOpen')} />
-        </Left>
-      </Header> */}
-      <TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
+      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View> */}
+      <View>
+        <StatusBar barStyle='dark-content' backgroundColor='white'/>
+      </View>
+      <View style={{flex:1,alignItems:'center', justifyContent:'flex-end'}}>
   
             <View style={styles.imagestyle}>
-              <Image source={backgroundImage} style={{ height: 150, width: 150 }} />
+              <Image source={logoimage} style={{ height: 120, width: 120 }} />
             </View>
 
             {/* <Label style={{ color:'black' }} >Username</Label> */}
             <TextInput style={styles.inputBox} underlineColorAndroid='transparent'
-              placeholder="Enter Email"
+              placeholder="Email"
               autoCapitalize='none'
-              placeholderTextColor="grey"
+              placeholderTextColor="black"
               keyboardType="email-address"
               returnKeyType='next'
-              onSubmitEditing={()=> this.refs.txtPassword.focus()}
+              // autoFocus={true}
             />
 
             {/* <Label style={{ color:'black' }} >Password</Label> */}
             <TextInput style={styles.inputBox} underlineColorAndroid='transparent'
-              placeholder="Enter Password"
-              placeholderTextColor="grey"
+              placeholder="Password"
+              placeholderTextColor="black"
               secureTextEntry={true}
-              returnKeyType='next'
               autoCorrect={false}
-              ref={"txtPassword"}
-
-            
             />
-            <Button iconLeft style={styles.button}>
+
+            {/* <Button iconLeft style={styles.button}>
               <Feather name='log-in'size={22} color={'white'}/>
               <Text style={styles.buttonText}>Login</Text>
-            </Button>
+            </Button> */}
             
 
-            {/* <TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
 
             {/* <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText} onPress={()=>{this.props.navigation.navigate('Signup')}}>Click Here, SignUp</Text>
             </TouchableOpacity> */}
-
-            <TouchableOpacity>
-              <Text>Forgot Password, Click Here</Text>
+            <View style={{flexDirection:'row', margin:15, paddingRight:10,}}>
+            <TouchableOpacity >
+              <Text style={{color:'blue'}}>Forgot Password</Text>
             </TouchableOpacity>
+            <Text> or </Text>
+            <TouchableOpacity>
+              <Text style={{color:'red'}} onPress={()=>{this.props.navigation.navigate('Signup')}}>Sign Up</Text>
+            </TouchableOpacity>
+            </View>
 
-      </View>
-      </TouchableWithoutFeedback>
+     </View>
+     {/* </View>
+      </TouchableWithoutFeedback> */}
       </KeyboardAvoidingView>
-    </SafeAreaView>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal:10,
-    backgroundColor: '#536DFE',
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
   imagestyle: {
     alignItems: "center",
@@ -120,26 +113,24 @@ const styles = StyleSheet.create({
   inputBox: {
     width: 300,
     height: 45,
-    backgroundColor: 'white',
-    borderRadius: 7,
-    padding: 10,
-    marginVertical: 10,
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    borderRadius: 40,
+    paddingLeft: 20,
+    marginTop:10,
   },
   button: {
-    // margin: 10,
-    // backgroundColor: '#8BC34A',
-    borderRadius: 7,
-    marginLeft:50,
-    width: 200,
-    height: 45,
+    backgroundColor: '#8BC34A',
+    borderRadius: 40,
+    marginLeft:6,
+    width: 300,
+    height: 40,
     alignItems:'center',
+    justifyContent:'center',
+    marginTop:10
   },
   buttonText: {
-    // fontWeight:'bold',
-    // textAlign:'center',
-    // padding: 10,
+    fontWeight:'bold',
     fontSize: 17,
-    alignItems:'center',
-    // color:'#536DFE',
+    color:'#536DFE',
   }
 });

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Form, Item, Input, Label, Left, Right } from 'native-base';
 import { font } from 'expo';
-import { StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Text, View, Button, Image, StatusBar, SafeAreaView, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Text, View, Button, Image, StatusBar, SafeAreaView, KeyboardAvoidingView, ImageBackground } from 'react-native'
 import { NavigationActions } from 'react-navigation';
-import backgroundImage from '../assets/logo1.png';
+import logoimage from '../assets/logo1.png';
+import bg from '../images/limonata.jpg';
 import { Ionicons, MaterialIcons, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
-
+import {Loginpage} from './Loginpage.js';
 import * as firebase from 'firebase';
 // Initialize Firebase
 const firebaseConfig = {
@@ -25,8 +26,11 @@ export default class Signup extends Component {
   constructor(props){
     super(props)
     this.state=({
+      name:'',
       email:'',
-      password:''
+      mobile:'',
+      password:'',
+
     })
   }
   
@@ -44,80 +48,90 @@ export default class Signup extends Component {
   }
 
   render() {
+    const{navigate}=this.props.navigation;
     return (
-      <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content"/>
-      <KeyboardAvoidingView behavior='padding' style={styles.container}>
-      <TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
+      <ImageBackground source={require('../images/limonata.jpg')} style={{alignSelf:'stretch', width:null, height:null, flex:1}}>
+      <KeyboardAvoidingView style={styles.container}>
       
-        
+      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View> */}
+      <View>
+        <StatusBar barStyle='dark-content' backgroundColor='white'/>
+      </View>
+      <View style={{flex:1,alignItems:'center', justifyContent:'flex-end'}}>
+  
             <View style={styles.imagestyle}>
-              <Image source={backgroundImage} style={{ height: 150, width: 150 }} />
+              <Image source={logoimage} style={{ height: 120, width: 120 }} />
             </View>
 
             {/* <Label style={{ color:'black' }} >Username</Label> */}
             <TextInput style={styles.inputBox} underlineColorAndroid='transparent'
-              placeholder="Enter your Name"
-              placeholderTextColor="grey"
-              keyboardType="email-address"
+              placeholder='Name'
+              placeholderTextColor='black'
               returnKeyType='next'
-              onSubmitEditing={()=> this.refs.txtEmail.focus()}
+              autoCorrect={false}
             />
 
             <TextInput style={styles.inputBox} underlineColorAndroid='transparent'
-              placeholder="Enter your Email"
-              placeholderTextColor="grey"
+              placeholder='Mobile'
+              placeholderTextColor='black'
+              returnKeyType='next'
+            />
+
+            <TextInput style={styles.inputBox} underlineColorAndroid='transparent'
+              placeholder="Email"
+              autoCapitalize='none'
+              placeholderTextColor="black"
               keyboardType="email-address"
               returnKeyType='next'
-              ref={'txtEmail'}
-              onSubmitEditing={()=> this.refs.txtMobile.focus()}
-              onChangeText={(email)=>this.setState({email})}
             />
 
             {/* <Label style={{ color:'black' }} >Password</Label> */}
             <TextInput style={styles.inputBox} underlineColorAndroid='transparent'
-              placeholder="Enter your Mobile"
-              placeholderTextColor="grey"
-              returnKeyType='next'
-              ref={'txtMobile'}
-              onSubmitEditing={()=> this.refs.txtPassword.focus()}
-            />
-
-            <TextInput style={styles.inputBox} underlineColorAndroid='transparent'
               placeholder="Password"
-              placeholderTextColor="grey"
-              returnKeyType='next'
-              secureTextEntry
-              ref={'txtPassword'}
-              onChangeText={(password)=>this.setState({password})}
+              placeholderTextColor="black"
+              secureTextEntry={true}
+              autoCorrect={false}
             />
+            {/* <Button iconLeft style={styles.button}>
+              <Feather name='log-in'size={22} color={'white'}/>
+              <Text style={styles.buttonText}>Login</Text>
+            </Button> */}
 
+            {/* <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText} onPress={()=>{this.props.navigation.navigate('Signup')}}>Click Here, SignUp</Text>
+            </TouchableOpacity> */}
             <TouchableOpacity style={styles.button}
-            onPress={()=>this.signUpUser(this.state.email, this.state.password)}
-            >
+              onPress={()=>this.signUpUser(this.state.email, this.state.password)}>
               <Text style={styles.buttonText}>Signup</Text>
             </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Already account, Click Here</Text>
-            </TouchableOpacity>
             
-          
-      </View>
-      </TouchableWithoutFeedback>
+            <View style={{flexDirection:'row', margin:15}}>
+            <TouchableOpacity 
+            // in navigate option value write only navigation screen name 
+            onPress={()=>{this.props.navigation.navigate('Login')}}
+            >
+              <Text style={{color:'blue', fontSize:17, fontStyle:'italic'}}
+              >Login Here</Text>
+            </TouchableOpacity>
+            <Text style={{fontSize:17}}> or </Text> 
+            <TouchableOpacity onPress={()=>{this.props.navigation.navigate('DashBoard')}}>
+              <Text style={{color:'red', fontSize:17, fontStyle:'italic'}}> Go to Home </Text>
+            </TouchableOpacity>
+            </View>
+
+     </View>
+     {/* </View>
+      </TouchableWithoutFeedback> */}
       </KeyboardAvoidingView>
-    </SafeAreaView>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#536DFE',
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
   imagestyle: {
     alignItems: "center",
@@ -125,21 +139,22 @@ const styles = StyleSheet.create({
   inputBox: {
     width: 300,
     height: 45,
-    backgroundColor: 'white',
-    borderRadius: 7,
-    padding: 10,
-    marginVertical: 10,
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    borderRadius: 40,
+    paddingLeft: 20,
+    marginTop:10,
   },
   button: {
-    margin: 10,
     backgroundColor: '#8BC34A',
-    borderRadius: 7,
+    borderRadius: 40,
+    marginLeft:6,
     width: 300,
-    height: 45,
+    height: 40,
+    alignItems:'center',
+    justifyContent:'center',
+    marginTop:10,
   },
   buttonText: {
-    textAlign:'center',
-    padding: 10,
     fontWeight:'bold',
     fontSize: 17,
     color:'#536DFE',
