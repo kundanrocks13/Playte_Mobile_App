@@ -43,8 +43,8 @@ class Cardsection extends React.Component {
             <Left>
               <Thumbnail source={backgroundImage} />
               <Body>
-                <Text>Day Subscription Plan</Text>
-                <Text note>Fruit Juice</Text>
+                {/* <Text>Day Subscription Plan</Text> */}
+                <Text note>Name of Juice</Text>
               </Body>
             </Left>
           </CardItem>
@@ -54,7 +54,7 @@ class Cardsection extends React.Component {
           />
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate('Profile', { data: "daily subscription plan", Img: image })
+              this.props.navigation.navigate('Profile', { data: "Name of Juice", Img: image })
             }
             }>
 

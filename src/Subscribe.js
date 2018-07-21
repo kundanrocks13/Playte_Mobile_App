@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, CheckBox , Dimensions} from 'react-native';
+import { StyleSheet, View, Text, Image, CheckBox , Dimensions, ScrollView} from 'react-native';
 import { Cardimage } from './Cardimage';
 import { Card } from 'react-native-elements';
-import { CardItem, Body, ListItem, Container, Content } from 'native-base';
+import { CardItem, Body, ListItem, Container, Content, Right } from 'native-base';
 // import CheckBox from 'react-native-check-box';
 
 const wid = Dimensions.get('window');
@@ -12,7 +12,7 @@ var week=["Monday", "Tuesday", "Wednesday"];
 export default class Subscribe extends Component {
     static navigationOptions = {
         title: 'Your Subscriptions',
-        
+        header:null,
     }
     constructor(props) {
         super(props);
@@ -56,57 +56,102 @@ export default class Subscribe extends Component {
     }
 
     render() {
-        // const { navigation } = this.props;
-        // const data = navigation.getParam('data', 'no-data');
         return (
         <Container>
             <Content>
-            <Card>
-                {/* <Text>Subscribe here</Text>
-                <Text>{JSON.stringify(data)}</Text> */}
+            {/* <Card>  
                 <CardItem cardBody>
                     <Image source={this.state.Img} style={{height:200, width:wid.width, flex:1, alignSelf:'stretch', resizeMode:'contain'}}/>
                 </CardItem>
-                </Card>
-                <Card>
-                {/* <CardItem style={{height:170, width:wid.width}}>
+                </Card> */}
+                {/* <Card>
+                <CardItem style={{height:300, width:wid.width}}> */}
+                <ListItem style={{height:50}}>
                         <CheckBox
                         value={this.state.check0} 
                         onChange={()=>this.CheckBoxTest("check0")}
                         />
+                        <Body style={{flexDirection:'row', justifyContent:'space-between'}}>
                         <Text>Monday</Text>
+                        <View>
+                        <Text style={{color:'green', fontSize:15, fontFamily:'normal'}}>Orange Juice</Text>
+                        </View>
+                        </Body>
+                        </ListItem>
+                        <ListItem style={{height:50}}>
                         <CheckBox
                         value={this.state.check1} 
                         onChange={()=>this.CheckBoxTest("check1")}
                         />
+                        <Body style={{flexDirection:'row', justifyContent:'space-between'}}>
                         <Text>Tuesday</Text>
+                        <View>
+                        <Text style={{color:'green', fontSize:15, fontFamily:'normal'}}>Pomegranate Juice</Text>
+                        </View>
+                        </Body>
+                        </ListItem>
+                        <ListItem style={{height:50}}>
                         <CheckBox
                         value={this.state.check2} 
                         onChange={()=>this.CheckBoxTest("check2")}
                         />
+                        <Body style={{flexDirection:'row', justifyContent:'space-between'}}>
                         <Text>Wednesday</Text>
+                        <View>
+                        <Text style={{color:'green', fontSize:15, fontFamily:'normal'}}>Wood Apple Juice</Text>
+                        </View>
+                        </Body>
+                        </ListItem>
+                        <ListItem style={{height:50}}>
                         <CheckBox
                         value={this.state.check0} 
                         onChange={()=>this.CheckBoxTest("check3")}
                         />
+                        <Body style={{flexDirection:'row', justifyContent:'space-between'}}>
                         <Text>Thrusday</Text>
+                        <View>
+                        <Text style={{color:'green', fontSize:15, fontFamily:'normal'}}>Raspberries juice</Text>
+                        </View>
+                        </Body>
+                        </ListItem>
+                        <ListItem style={{height:50}}>
                         <CheckBox
                         value={this.state.check1} 
                         onChange={()=>this.CheckBoxTest("check4")}
                         />
+                        <Body style={{flexDirection:'row', justifyContent:'space-between'}}>
                         <Text>Friday</Text>
+                        <View>
+                        <Text style={{color:'green', fontSize:15, fontFamily:'normal'}}>Apple juice</Text>
+                        </View>
+                        </Body>
+                        </ListItem>
+                        <ListItem style={{height:50}}>
                         <CheckBox
                         value={this.state.check2} 
                         onChange={()=>this.CheckBoxTest("check5")}
                         />
+                        <Body style={{flexDirection:'row', justifyContent:'space-between'}}>
                         <Text>Saturday</Text>
+                        <View>
+                        <Text style={{color:'green', fontSize:15, fontFamily:'normal'}}>Lime juice</Text>
+                        </View>
+                        </Body>
+                        </ListItem>
+                        <ListItem style={{height:50}}>
                         <CheckBox
                         value={this.state.check2} 
                         onChange={()=>this.CheckBoxTest("check6")}
                         />
+                        <Body style={{flexDirection:'row', justifyContent:'space-between'}}>
                         <Text>Sunday</Text>
-                </CardItem> */}
-            </Card>
+                        <View>
+                        <Text style={{color:'green', fontSize:15, fontFamily:'normal'}}>asfjdsfk</Text>
+                        </View>
+                        </Body>
+                        </ListItem>
+                {/* </CardItem>
+            </Card> */}
             </Content>
         </Container>
         );
