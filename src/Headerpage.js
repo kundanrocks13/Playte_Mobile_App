@@ -7,6 +7,7 @@ import { StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import Loginpage from './Loginpage';
 import Signup from './Signup';
+import Expo from 'expo';
 // import Drawernavigation from './Drawernavigation';
 
 export default class Headerpage extends Component {

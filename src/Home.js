@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, StatusBar, Platform } from 'react-native';
 import backgroundImage from '../assets/logo1.png';
 import { Container, Content, Left } from 'native-base';
+import {createStackNavigator} from 'react-navigation'; 
 import Swiper from 'react-native-swiper';
 import cardImage2 from '../assets/images2.jpg';
 // import { Ionicons, MaterialIcons, MaterialCommunityIcons, Octicons}from '@expo/vector-icon';
@@ -10,8 +11,10 @@ import Loginpage from './Loginpage';
 import Signup from './Signup';
 import Cardimage from './Cardimage';
 import Headerpage from './Headerpage';
+import Subscribe from './Subscribe';
+import Vieworder from './checkout/Vieworder';
 
-export default class Home extends Component {
+class Home extends Component {
 
     // static navigationOptions = ({
     //     headerTitle:(
@@ -48,12 +51,30 @@ export default class Home extends Component {
                     /> */}
                     {/* <Drawernavigation/> */}
                     {/* <Headerpage/> */}
-                    <Cardimage/>
+                    <Cardimage  {...this.props}/>
                   
                    
             </Container>
         );
     }
 }
+
+const Tabstack = createStackNavigator({
+    Home:{
+        screen:Home,  // Front page of App
+        navigationOptions:
+        {header:null}        
+    },
+    Subscribe: {
+        screen: Subscribe
+      },
+    Vieworder: { 
+    screen: Vieworder,
+    // navigationOptions:
+    //     {header:null}
+    }
+})
+
+export default Tabstack;
 
 

@@ -7,6 +7,7 @@ import Home from './Home';
 import { createStackNavigator, NavigationActions, createMaterialTopTabNavigator } from 'react-navigation';
 import Subscribe from './Subscribe';
 import Headerpage from './Headerpage';
+import Vieworder from './checkout/Vieworder';
 
 var ImageArray = [
   require('../assets/juice1.jpg'),
@@ -15,26 +16,11 @@ var ImageArray = [
   require('../assets/images4.jpg'),
 ];
 
-class Cardsection extends React.Component {
+ export default class Cardsection extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //   isReady: false
-  //   };
-  //   }
-
-  //   async componentWillMount() {
-  //   await Expo.Font.loadAsync({
-  //   Roboto: require("native-base/Fonts/Roboto.ttf"),
-  //   Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-  //   Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
-  //   });
-  //   this.setState({ isReady: true });
-  //   }
   ImageCard() {
     return ImageArray.map((image, index) => {
       return (
@@ -54,7 +40,7 @@ class Cardsection extends React.Component {
           />
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate('Profile', { data: "Name of Juice", Img: image })
+              this.props.navigation.navigate('Subscribe', { data: "Name of Juice", Img: image })
             }
             }>
 
@@ -97,12 +83,8 @@ class Cardsection extends React.Component {
     })
   }
   render() {
-    // if (!this.state.isReady) {
-    //   return <Expo.AppLoading />;
-    //   }
     return (
       <Content>
-        {/* <Headerpage {...this.props}/> */}
         {this.ImageCard()}
       </Content>
     );
@@ -111,7 +93,6 @@ class Cardsection extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
-
     paddingVertical: 5,
     backgroundColor: '#8BC34A',
     borderRadius: 7,
@@ -125,59 +106,53 @@ const styles = StyleSheet.create({
     marginTop:2,
   }
 })
-// const LoginFun=()=>{
 
-//   const navigateAction = NavigationActions.navigate({
-//     routeName: 'Loginpage',
+// const RootStack = createStackNavigator(
+//   {
+//     Home: {
+//       screen: Cardsection,
+//       // headerOptions: {
+//       //   header: {visible:false},
+//       // }
+//       // navigationOptions:{
+//       //  title:'playte',
+//       //  headerRight:(
+//       //    <TouchableOpacity onPress={LoginFun}> 
+//       //      <Text>login</Text>
+//       //      </TouchableOpacity>
+//       //  )
+//       // }
+//     },
+//     Subscribe: {
+//       screen: Subscribe,
+//       // headerOptions: {
+//       //   header: {visible:false},
+//       // }
+//     },
+//     Vieworder: { 
+//       screen: Vieworder,
+//       headerOptions: {
+//         header: null,
+//       }
+//     }
+//   },
 
-//     params: {},
+//   {
+//     navigationOptions: {
+//       headerStyle: {
+//         backgroundColor: '#f4511e',
+//       },
+//       headerTintColor: '#fff',
+//       headerTitleStyle: {
+//         fontWeight: 'bold',
+//       },
+//     },
+//   }
+// );
 
-//     action: NavigationActions.navigate({ routeName: 'Login' }),
-//   });
-
-//   this.props.navigation.dispatch(navigateAction);
+// export default class Cardimage extends React.Component {
+//   render() {
+//     return <RootStack />;
+//   }
 // }
-const RootStack = createStackNavigator(
-  {
-    Home: {
-      screen: Cardsection,
-      // headerOptions: {
-      //   header: {visible:false},
-      // }
-      // navigationOptions:{
-      //  title:'playte',
-      //  headerRight:(
-      //    <TouchableOpacity onPress={LoginFun}> 
-      //      <Text>login</Text>
-      //      </TouchableOpacity>
-      //  )
-      // }
-    },
-    Profile: {
-      screen: Subscribe,
-      headerOptions: {
-        // headerLeft: null,
-      }
-    }
-    // Login:{
-    //   screen: Loginpage
-    // }
-  },
-  {
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#f4511e',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  }
-);
 
-export default class Cardimage extends React.Component {
-  render() {
-    return <RootStack />;
-  }
-}

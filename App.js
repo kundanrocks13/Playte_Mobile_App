@@ -7,6 +7,9 @@ import Dashboard from './src/Dashboard';
 import Drawernavigation from './src/Drawernavigation'
 import { Icon, Ionicons, MaterialIcons, MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { Body } from 'native-base';
+import Subscribe from './src/Subscribe';
+import Vieworder from './src/checkout/Vieworder';
+import createStackNavigator from 'react-navigation';
 
 
 export default class App extends Component {

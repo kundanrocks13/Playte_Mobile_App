@@ -9,6 +9,9 @@ import { Tab, Left } from 'native-base';
 import backgroundImage from '../assets/logo1.png';
 import {Container, Content,Header, Body} from 'native-base';
 import { Foundation, MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import Home from './Home';
+import Subscribe from './Subscribe';
+import Vieworder from './checkout/Vieworder';
 
 const CustomDrawerContentComponent = (props) =>(
     <Container>
@@ -28,6 +31,50 @@ const CustomDrawerContentComponent = (props) =>(
       </Content>
     </Container>
 )
+
+
+// const Roo = createStackNavigator(
+// {
+//     Home: {
+//     screen: Home,
+//     // headerOptions: {
+//     //   header: {visible:false},
+//     // }
+//     // navigationOptions:{
+//     //  title:'playte',
+//     //  headerRight:(
+//     //    <TouchableOpacity onPress={LoginFun}> 
+//     //      <Text>login</Text>
+//     //      </TouchableOpacity>
+//     //  )
+//     // }
+//     },
+//     Subscribe: {
+//     screen: Subscribe
+//     // headerOptions: {
+//     //   header: {visible:false},
+//     // }
+//     },
+//     Vieworder: { 
+//     screen: Vieworder,
+//     headerOptions: {
+//         header: null,
+//     }
+//     }
+// },
+
+// {
+//     navigationOptions: {
+//     headerStyle: {
+//         backgroundColor: '#f4511e',
+//     },
+//     headerTintColor: '#fff',
+//     headerTitleStyle: {
+//         fontWeight: 'bold',
+//     },
+//     },
+// }
+// );
 
 
 const Tabstack = createStackNavigator({
