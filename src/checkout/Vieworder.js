@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Text, Body } from "native-base";
+import {StyleSheet} from 'react-native';
+import { Container, Header, Content, Card, CardItem, Text, Body, View } from "native-base";
 
 export default class Vieworder extends Component {
   static navigationOptions={
@@ -12,43 +13,61 @@ export default class Vieworder extends Component {
         padding:5,
     }
   }
+  constructor(props){
+    super(props)
+    this.state={
+      // check:this.props.navigation.state.val.check,
+      // // date:this.props.navigation.state.params.date,
+      // juice:this.props.navigation.state.val.juice
+    }
+  }
+  
   render() {
+    // const children = this.props.navigation.state.params.check
     return (
-      <Container>
-        {/* <Header /> */}
-        <Content padder>
-          <Card>
-            <CardItem header bordered>
-              <Text>Your juice plan</Text>
-            </CardItem>
-            <CardItem bordered>
-              <Body>
-                <Text>
-                  NativeBase is a free and open source framework that enable
-                  developers to build
-                  high-quality mobile apps using React Native iOS and Android
-                  apps
-                  with a fusion of ES6.
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem bordered>
-              <Body>
-                <Text>
-                  NativeBase is a free and open source framework that enable
-                  developers to build
-                  high-quality mobile apps using React Native iOS and Android
-                  apps
-                  with a fusion of ES6.
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem footer bordered>
-              <Text>SubTotal</Text>
-            </CardItem>
-          </Card>
-        </Content>
-      </Container>
+      // <View key={this.props.keyval} >
+      
+      // <Text>{this.props.val.check}</Text>
+      // <Text>{this.props.val.juice}</Text>
+      // {/* <Text>{this.state.check}</Text>
+      // <Text>{this.state.juice}</Text> */}
+      
+      //   </View>
+
+      
+                
+                <View>
+                <View key={this.props.keyval} style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:17,paddingRight:17}} >
+               
+                  
+                <Text style={{fontSize:13}}>{this.props.val.check}</Text>
+                <Text style={{fontSize:13}}>{this.props.val.juice}</Text>
+                <Text style={{fontSize:13}}>price</Text>
+                
+               
+
+                  
+{/*                   
+                  <Text>
+                  {this.props.val.juice}
+                 
+                  </Text> */}
+                  
+
+                  </View>
+                  
+                  </View>
+
+               
+              
+              
+             
+              
+            
+          
+        
+        
     );
   }
 }
+

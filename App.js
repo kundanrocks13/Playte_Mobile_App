@@ -19,7 +19,7 @@ export default class App extends Component {
     // Animation for Playte logo start here
     setTimeout(() => {
       this.setState({ currentScreen: 'Drawernavigation' })
-    }, 3000)
+    }, 1000)
     // Animation for Playte logo Ends here
   }
   render() {

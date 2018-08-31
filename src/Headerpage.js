@@ -3,7 +3,7 @@ import { Container, Header, Left, Body, Right,
   Button, Icon, Title, View,
   Content, Text
  } from 'native-base';
-import { StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { StyleSheet, TouchableOpacity, StatusBar, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import Loginpage from './Loginpage';
 import Signup from './Signup';
@@ -26,6 +26,14 @@ export default class Headerpage extends Component {
     });
     this.setState({ isReady: true });
   }
+
+  // componentWillMount(){
+  //   this.startHeaderHeight = 60
+  //   if(Platform.OS == 'ios')
+  //   {
+  //     this.startHeaderHeight = 100 + StatusBar.currentHeight
+  //   }
+  // }
   
   render() {
     if (!this.state.isReady) {
@@ -33,7 +41,8 @@ export default class Headerpage extends Component {
     }
     return (
       <View>
-        <Header style={{ height: 60 }}>
+        {/* this.startHeaderHeight */}
+        <Header style={{ height: 60, borderBottomColor:'red', borderBottomWidth:1,backgroundColor:'#820D77' }}>
           <View>
             <StatusBar barStyle='light-content'/>
           </View>

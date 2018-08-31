@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import { createBottomTabNavigator, DrawerNavigator } from 'react-navigation';
+import { createBottomTabNavigator, DrawerNavigator, tabBarOptions } from 'react-navigation';
 import Loginpage from './Loginpage';
 import Signup from './Signup';
 import Home from './Home';
@@ -30,7 +30,7 @@ export default createBottomTabNavigator({
     screen: Home,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <MaterialIcons name='home' size={30} />
+        <MaterialIcons name='home' color={tintColor} size={30} />
       )
     }
   },
@@ -39,7 +39,7 @@ export default createBottomTabNavigator({
     title:'My Subscriptions',
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Octicons name='checklist' size={30} />
+        <Octicons name='checklist' color={tintColor} size={30} />
       )
     }
   },
@@ -47,7 +47,7 @@ export default createBottomTabNavigator({
     screen: Store,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <MaterialIcons name='store' size={30} />
+        <MaterialIcons name='store' color={tintColor} size={30} />
       )
     }
   },
@@ -55,11 +55,28 @@ export default createBottomTabNavigator({
     screen:Profile,
     navigationOptions:{
       tabBarIcon:({tintColor})=>(
-        <MaterialCommunityIcons name='face-profile' size={30} />
+        <MaterialCommunityIcons name='face-profile' color={tintColor} size={30}/>
       )
+      
+      
+    }
+  },
+  
+},{
+  tabBarOptions: {
+    activeTintColor:'red',
+    inactiveTintColor: 'grey',
+    style:{
+      backgroundColor:'white',
+      borderTopWidth:0,
+      shadowOffset:{width:5,height:3},
+      shadowColor:'black',
+      shadowOpacity: 0.5,
+      elevation: 5
     }
   }
-});
+}
+);
 
 const styles = StyleSheet.create({
   homescreen: {
